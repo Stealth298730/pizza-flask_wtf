@@ -1,0 +1,14 @@
+{# "templates/_navigation.html" #}
+
+<nav>
+
+<button>
+
+    <a href="{{ url_for('pizzas.index') }}">Головна сторінка</a>
+    <a href="{{ url_for('pizzas.menu') }}">Меню</a>
+    <a href = "{{url_for('pizzas.poll')}}">Голосування</a>
+    <a href = "{{url_for('pizzas.results')}}">Результати голосування</a>
+    <a href = "{{url_for('show_reviews')}}">Відгуки</a>
+</button>
+
+</nav>

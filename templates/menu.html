@@ -1,0 +1,45 @@
+{# "templates/menu.html" #}
+
+{% extends "_base.html" %}
+
+{% block content %}
+{% include "_wheather.html" %}
+<table>
+    <tr>
+        <th>№</th>
+        <th>Назва піци</th>
+        <th>Ціна</th>
+        <th>Інгредієнти</th>
+    </tr>
+    {% for pizza in pizzas %}
+        <tr>
+            <td>{{ pizza.id }}</td>
+            <td>{{ pizza.name }}</td>
+            <td>{{ pizza.price }}</td>
+            <td>
+                {% for ingredient in pizza.ingredients %}
+                    {{ ingredient.name }}|
+                {% endfor %}
+            </td>
+        <td>
+        <a href="{{ url_for('pizzas.edit_pizza', id=pizza.id) }}" class="btn btn-info" >Редагувати піццу</a>
+        <a href="{{ url_for('pizzas.del_pizza', id=pizza.id) }}" class="btn btn-danger">Видалити піццу</a>
+    </td>
+    {% endfor %}</tr>
+</table>
+
+<form action="{{ url_for('pizzas.add_pizza')}}" method="post">
+    <p>
+        <label>Назва піци</label>
+        <input type="text" name="name">
+    </p>
+    <p>
+        <label>Ціна</label>
+        <input type="number" name="price">
+    </p>
+    <p>
+     
+    <button type="submit">Додати піцу</button>
+</form>
+
+{% endblock content %}

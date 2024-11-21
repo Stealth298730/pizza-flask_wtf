@@ -1,0 +1,22 @@
+{%extends "_base.html"%}
+{%block content%}
+<label>Результати голосування</label>
+<table>
+<thead>
+<tr>
+<td>№</td>
+<td>Назва ціни</td>
+</tr>
+</thead>
+
+<tbody>
+    {%for answer in answers%}
+    <tr>
+<td>{{loop.index}}</td>
+<td>{{answer}}</td>
+    </tr>
+
+{%endfor%}
+</tbody>
+</table>
+{% endblock content%}

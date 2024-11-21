@@ -1,0 +1,18 @@
+{%extends "_base.html"%}
+{%block content%}
+<form action = "{{url_for('pizzas.add_vote')}}">
+<label>{{question}}</label>
+{%  for pizza in pizzas %}
+<div class = "form-check">
+<input class = "form-check-input" type = "radio" name = "pizza" value = "{{pizza.name}}"
+<label class = "form-check-label" for ="flexRadioDefault1">
+    {{pizza.name}}
+</label>
+
+
+
+</div>
+{%endfor%}
+<input type = "submit">
+</form>
+{%endblock content%}

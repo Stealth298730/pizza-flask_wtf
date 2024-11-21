@@ -1,0 +1,55 @@
+{# templates/macros.html #}
+
+{% macro light_or_dark_mode(element) %}
+
+{% if request.args.get('mode') == "dark" %}
+
+<a href="{{ request.path }}">Перемкнути на світлу тему</a>
+
+<style>
+    {{ element }} {
+    background-color: #212F3C;
+    color: #FFFFF0;
+    }
+    {{ element }} a {
+    color: #00BFFF !important;
+    }
+</style>
+{% else %}
+<a href="{{ request.path }}?mode=dark">Перемкнути на темну тему</a>
+{% endif %}
+
+{% endmacro %}
+
+{% macro sort_price(pizzas) %}
+
+<table>
+    <tr>
+        <th>Назва піци</th>
+        <th>Склад</th>
+        <th>Ціна</th>
+    </tr>
+    {% if request.args.get("sort") %}
+    <a href="{{ request.path }}">Вимкнути сортування</a>
+
+        {% for pizza in pizzas|sort(attribute="price") %}
+        <tr>
+            <td>{{ pizza.name }}</td>
+            <td>{{ pizza.ingredients }}</td>
+            <td>{{ pizza.price }}</td>
+        </tr>
+        {% endfor %}
+
+    {% else %}
+    <a href="{{ request.path }}?sort=True">Увімкнути сортування</a>
+        {% for pizza in pizzas %}
+        <tr>
+            <td>{{ pizza.name }}</td>
+            <td>{{ pizza.ingredients }}</td>
+            <td>{{ pizza.price }}</td>
+        </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+
+{% endmacro %}

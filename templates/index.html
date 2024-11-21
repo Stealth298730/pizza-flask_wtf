@@ -1,0 +1,10 @@
+{# "templates/index.html" #}
+
+{% extends "_base.html" %}
+
+{% block content %}
+{% include "_wheather.html" %}
+<h1><p>Пропонуємо таку піцу: <em>{{ pizza_name }}</em></p></h1>
+{% endblock content %}
+<a type="button", href="/menu"><em>Перейти в Мега меню</em></button>
+

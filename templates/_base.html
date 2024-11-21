@@ -1,0 +1,28 @@
+{# "templates/_base.html" #}
+
+{% import "_macros.html" as macros %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>
+        {% block title %}
+        {{ title }}
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    {% include "_navigation.html" %}
+    <br>
+
+    <br><br><br>
+
+    {% block content %}
+    {% endblock content %}
+
+    <footer><br><button>{{ macros.light_or_dark_mode("body") }}</button></footer>
+</body>
+</html>
